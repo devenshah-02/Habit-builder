@@ -44,3 +44,15 @@ export interface Tier {
   glow: string;
   bannerBg: string;
 }
+
+/** Static profile facts — set once, not logged repeatedly. */
+export interface Profile {
+  heightCm: number | null;
+}
+
+/** A single body-metrics log entry. Fully separate from Core Score/streak by design. */
+export interface BodyMetricEntry {
+  date: string; // YYYY-MM-DD
+  weightKg?: number;
+  bodyFatPct?: number;
+}

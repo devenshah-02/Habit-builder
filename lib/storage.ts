@@ -1,4 +1,4 @@
-import { AppMeta, DayRecord, Habit } from "./types";
+import { AppMeta, BodyMetricEntry, DayRecord, Habit, Profile } from "./types";
 
 const HABITS_KEY = "ht:habits";
 const DAYS_KEY = "ht:days"; // Record<string /*date*/, DayRecord>
@@ -82,4 +82,37 @@ export function loadMeta(): AppMeta {
 
 export function saveMeta(meta: AppMeta) {
   window.localStorage.setItem(META_KEY, JSON.stringify(meta));
+}
+
+const PROFILE_KEY = "ht:profile";
+const BODY_METRICS_KEY = "ht:bodyMetrics"; // BodyMetricEntry[]
+
+export function loadProfile(): Profile {
+  if (typeof window === "undefined") return { heightCm: null };
+  const raw = window.localStorage.getItem(PROFILE_KEY);
+  if (!raw) return { heightCm: null };
+  try {
+    return JSON.parse(raw) as Profile;
+  } catch {
+    return { heightCm: null };
+  }
+}
+
+export function saveProfile(profile: Profile) {
+  window.localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+}
+
+export function loadBodyMetrics(): BodyMetricEntry[] {
+  if (typeof window === "undefined") return [];
+  const raw = window.localStorage.getItem(BODY_METRICS_KEY);
+  if (!raw) return [];
+  try {
+    return JSON.parse(raw) as BodyMetricEntry[];
+  } catch {
+    return [];
+  }
+}
+
+export function saveBodyMetrics(entries: BodyMetricEntry[]) {
+  window.localStorage.setItem(BODY_METRICS_KEY, JSON.stringify(entries));
 }
