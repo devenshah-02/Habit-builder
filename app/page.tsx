@@ -151,26 +151,33 @@ export default function Home() {
               Morning, you.
             </div>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <FreezeTokens freeze={meta.freeze} justEarned={freezeJustEarned.current} />
-            <Link
-              href="/settings"
-              style={{
-                width: 30,
-                height: 30,
-                borderRadius: 10,
-                border: "1.5px solid var(--color-idle-border)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "var(--color-muted)",
-                textDecoration: "none",
-                fontSize: 15,
-              }}
-              aria-label="Settings"
-            >
-              ⚙
-            </Link>
+            {[
+              { href: "/stats", glyph: "▦", label: "History" },
+              { href: "/profile", glyph: "◐", label: "Profile" },
+              { href: "/settings", glyph: "⚙", label: "Settings" },
+            ].map((nav) => (
+              <Link
+                key={nav.href}
+                href={nav.href}
+                style={{
+                  width: 30,
+                  height: 30,
+                  borderRadius: 10,
+                  border: "1.5px solid var(--color-idle-border)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "var(--color-muted)",
+                  textDecoration: "none",
+                  fontSize: 14,
+                }}
+                aria-label={nav.label}
+              >
+                {nav.glyph}
+              </Link>
+            ))}
           </div>
         </div>
 
