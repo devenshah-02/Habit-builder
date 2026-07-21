@@ -1,0 +1,84 @@
+:root {
+  --color-bg: #fbf6ef;
+  --color-surface: #e9e1d6;
+  --color-brand: #c2461b;
+  --color-accent: #1bb6a6;
+  --color-tier-okay: #d18a6e;
+  --color-tier-rough: #8c8479;
+  --color-banner-rough: #6e675e;
+  --color-text: #221d18;
+  --color-muted: #8c8479;
+  --color-row-border: #efe6d8;
+  --color-row-complete-bg: #f4efe6;
+  --color-track: #efe6d8;
+  --color-hairline: #e7dccb;
+  --color-empty-dot: #eadfcf;
+  --color-idle-border: #e2d7c6;
+
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-body: "Switzer", -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-surface);
+  font-family: var(--font-body);
+  color: var(--color-text);
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font-family: inherit;
+}
+
+@keyframes bannerIn {
+  from {
+    transform: translateY(-18px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes tokenPop {
+  0% {
+    transform: scale(0.6);
+  }
+  60% {
+    transform: scale(1.18);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes confettiUp {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), calc(var(--dy) - 60px)) rotate(220deg) scale(0.4);
+    opacity: 0;
+  }
+}
+
+@keyframes perfectPulse {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.55;
+  }
+  100% {
+    opacity: 0;
+  }
+}
